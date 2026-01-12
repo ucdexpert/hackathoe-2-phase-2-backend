@@ -1,0 +1,4 @@
+spec:
+  python_version: "3.10"
+  app_file: app.py
+  requirements: requirements.txt

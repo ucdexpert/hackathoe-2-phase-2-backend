@@ -4,6 +4,7 @@ from sqlmodel import Session, select
 from models import Task
 from database import get_session
 from typing import Dict, Any
+from datetime import datetime
 from .auth import validate_user_access
 from .validation import validate_tool_input
 
@@ -72,7 +73,7 @@ async def complete_task_tool(arguments: Dict[str, Any], authenticated_user_id: s
 
             # Update completion status
             task.completed = completed
-            task.updated_at = task.__class__.updated_at.default.arg()  # Use the same datetime function as in the model
+            task.updated_at = datetime.utcnow()
 
             session.add(task)
             session.commit()
