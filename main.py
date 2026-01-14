@@ -11,10 +11,11 @@ app = FastAPI(title="Todo API")
 # CORS configuration - Allow all origins for testing
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://localhost:3000",
-                     "http://localhost:3001",
-                     "https://todo-app-one-gamma-91.vercel.app/login"
-    ],  # Allow all origins for testing
+    allow_origins=[
+    "https://todo-app-one-gamma-91.vercel.app",  # No /login!
+    "http://localhost:3000",   # http not https for local
+    "http://localhost:3001"
+]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
